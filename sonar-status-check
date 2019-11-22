@@ -1,6 +1,6 @@
 node{
    stage('SCM Checkout'){
-     git 'https://github.com/javahometech/my-app'
+     git 'https://github.com/rajcdlmec/my-app'
    }
    stage('Compile-Package'){
       // Get maven home path
@@ -23,7 +23,7 @@ node{
                    channel: '#jenkins-pipeline-demo',
                    color: 'danger', 
                    message: 'SonarQube Analysis Failed', 
-                   teamDomain: 'javahomecloud',
+                   teamDomain: 'wemonde',
                    tokenCredentialId: 'slack-demo'
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
@@ -33,14 +33,14 @@ node{
    stage('Email Notification'){
       mail bcc: '', body: '''Hi Welcome to jenkins email alerts
       Thanks
-      Hari''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'hari.kammana@gmail.com'
+      Rajesh''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'rajesh.kumar@wemonde.com'
    }
    stage('Slack Notification'){
        slackSend baseUrl: 'https://hooks.slack.com/services/',
        channel: '#jenkins-pipeline-demo',
        color: 'good', 
        message: 'Welcome to Jenkins, Slack!', 
-       teamDomain: 'javahomecloud',
+       teamDomain: 'wemonde',
        tokenCredentialId: 'slack-demo'
    }
 
