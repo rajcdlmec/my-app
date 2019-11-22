@@ -12,6 +12,15 @@
        Thanks
        Rajesh''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'rajesh.kumar@wemonde.com'
     }
+    
+    stage('Slack Notification'){
+       slackSend baseUrl: 'https://hooks.slack.com/services/', 
+         channel: '#jenkins-pipeline-demo', 
+         color: 'good', 
+         message: 'Welcome to Jenkins, Slack!', 
+         teamDomain: 'wemonde', 
+         tokenCredentialId: 'slack-demo'
+    }
 }
 
 
